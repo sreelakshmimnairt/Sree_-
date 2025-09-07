@@ -27,7 +27,7 @@ def generate_colors(n):
         colors.append((r, g, b))
     return colors
 
-colors = generate_colors(9)  # 9different colors for 8 layers
+colors = generate_colors(10)  # 9different colors for 8 layers
 
 # Draw multiple layers of petals
 radii = [360, 330, 290, 240, 220,180,130,100,60,30]  # Radii for layers
