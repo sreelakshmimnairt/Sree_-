@@ -1,0 +1,39 @@
+import turtle
+import colorsys
+
+# Setup screen
+turtle.bgcolor("white")
+turtle.speed(0)
+turtle.hideturtle()
+turtle.colormode(255)
+
+# Function to draw a circular ring of petals
+def draw_layer(radius, petals, color):
+    turtle.color(color)
+    for _ in range(petals):
+        turtle.begin_fill()
+        turtle.circle(radius, 60)   # Petal curve
+        turtle.left(120)
+        turtle.circle(radius, 60)
+        turtle.left(360 / petals)   # Move to next petal
+        turtle.end_fill()
+
+# Generate color palette
+def generate_colors(n):
+    colors = []
+    for i in range(n):
+        hue = i / n
+        r, g, b = [int(x * 255) for x in colorsys.hsv_to_rgb(hue, 1,1)]
+        colors.append((r, g, b))
+    return colors
+
+colors = generate_colors(9)  # 9different colors for 8 layers
+
+# Draw multiple layers of petals
+radii = [360, 330, 290, 240, 220,180,130,100,60]  # Radii for layers
+petals_count = [100, 40, 10, 96, 20,30,45,30,60]  # Number of petals per layer
+
+for i in range(len(radii)):
+    draw_layer(radii[i], petals_count[i], colors[i])
+
+turtle.done()
